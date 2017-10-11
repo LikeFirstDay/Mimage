@@ -1,2 +1,2 @@
 # Mimage
-M
+M image
