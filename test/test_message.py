@@ -1,19 +1,16 @@
 from tkinter import *
 from quitter import Quitter
 
-def fetch():
-    print('Input => "%s"' % ent.get())
 
 root = Tk()
 ent = Entry(root)
 ent.insert(0,'Type words here')
+ent.config(state=DISABLED,show='')
 ent.pack(side=TOP,fill=X)
 
 ent.focus()
-ent.bind('<Return>',(lambda event: fetch()))
-btn = Button(root,text='Fetch',command=fetch())
-btn.pack(side=LEFT)
-Quitter(root).pack(side=RIGHT)
+ent.bind('<Return>',(lambda event: print('Input => "%s"' % ent.get())))
+
 msg = Message(root,text='????')
 msg.config(bg='pink',font=('times',16,'italic'))
 msg.pack(fill=X,expand=YES)
