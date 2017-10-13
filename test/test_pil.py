@@ -1,8 +1,11 @@
 from tkinter import *
-from PIL import ImageTk,Image
+from PIL import Image
+from PIL.ImageTk import PhotoImage
+
 path = 'X:\\图片\\按钮\\'
 
-
+root = Tk()
 photoimg = ImageTk.PhotoImage(file=path+'按钮.png')
-Button(image=photoimg).pack()
-Button.mainloop()
+print(photoimg.width(),photoimg.height())
+Button(root,image=photoimg).pack()
+root.mainloop()
