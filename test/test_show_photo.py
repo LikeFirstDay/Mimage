@@ -40,24 +40,29 @@ class ViewOne(Toplevel):
 def viewer(imgdir, kind=Toplevel,cols=None):
     win = kind()
     win.title('Viewer:'+imgdir)
-    quit = Button(win,text='Quit',command=win.quit,bg='beige')
-    quit.pack(fill=X,side=BOTTOM)
+
+
     thumbs = makeThumbs(imgdir)
     if not cols:
         cols = int(math.ceil(math.sqrt(len(thumbs))))
 
     savephotos = []
+    rownum=0
     while thumbs:
         thumbsrow,thumbs = thumbs[:cols],thumbs[cols:]
-        row = Frame(win)
-        row.pack()
+        colnum=0
         for (imgfile,imgobj) in thumbsrow:
+            size = max(imgobj.size)
+            print (size)
             photo = PhotoImage(imgobj)
-            link = Button(row,image = photo)
+            link = Button(win,image = photo)
             handler = lambda savefile=imgfile:ViewOne(imgdir,savefile)
             link.config(command=handler)
-            link.pack(side=LEFT,expand=YES)
+            link.grid(row=rownum,column=colnum)
             savephotos.append(photo)
+            colnum += 1
+        rownum += 1
+    quit = Button(win, text='Quit', command=win.quit, bg='beige').grid(columnspan=cols,stick=EW)
     return win,savephotos
 
 if __name__ == '__main__':

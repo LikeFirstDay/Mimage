@@ -5,6 +5,7 @@
 
 from tkinter import *
 from tkinter.messagebox import askokcancel
+import math
 
 class Quitter(Frame):
     def __init__(self,parent=None):
