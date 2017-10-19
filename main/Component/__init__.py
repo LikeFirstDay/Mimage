@@ -1,1 +1,1 @@
-__all__ = ['MainUi',]
+__all__ = ['GetComponent',]
